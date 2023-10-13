@@ -22,6 +22,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 # Project ID Quota.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
+# Call the BCR setup
+$(call inherit-product-if-exists, vendor/bcr/bcr.mk)
+
 # AAPT
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
@@ -190,8 +193,8 @@ PRODUCT_PACKAGES += \
     fastbootd
 
 # Fastcharge
-PRODUCT_PACKAGES += \
-    vendor.lineage.fastcharge@1.0-service.xiaomi
+#PRODUCT_PACKAGES += \
+#    vendor.lineage.fastcharge@1.0-service.xiaomi
 
 # Fingerprint
 PRODUCT_PACKAGES += \
