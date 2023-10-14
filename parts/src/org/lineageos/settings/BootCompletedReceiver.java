@@ -24,6 +24,8 @@ import android.os.IBinder;
 import android.util.Log;
 import android.view.Display.HdrCapabilities;
 import android.view.SurfaceControl;
+import android.content.SharedPreferences;
+import android.os.SystemProperties;
 
 import org.lineageos.settings.dirac.DiracUtils;
 import org.lineageos.settings.dolby.DolbyUtils;
@@ -39,6 +41,7 @@ public class BootCompletedReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(final Context context, Intent intent) {
         if (DEBUG) Log.d(TAG, "Received boot completed intent");
+        DiracUtils.getInstance(context);
         DolbyUtils.getInstance(context).onBootCompleted();
         DozeUtils.checkDozeService(context);
         RefreshUtils.initialize(context);
